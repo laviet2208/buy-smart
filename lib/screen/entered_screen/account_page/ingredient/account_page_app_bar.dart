@@ -1,6 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../data/finaldata.dart';
+
 class account_page_app_bar extends StatelessWidget {
   const account_page_app_bar({super.key});
 
@@ -89,9 +91,14 @@ class account_page_app_bar extends StatelessWidget {
                     padding: EdgeInsets.only(top: 10, bottom: 10),
                     child: Container(
                       width: 35,
+                      height: 35,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        border: Border.all(width: 0.5),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(5),
+                        child: finaldata.avatarUrl == '' ? Image.asset('assets/image/product_type_example/ava_example.png', fit: BoxFit.cover,) :
+                        Image.network(finaldata.avatarUrl, fit: BoxFit.cover,),
                       ),
                     ),
                   ),

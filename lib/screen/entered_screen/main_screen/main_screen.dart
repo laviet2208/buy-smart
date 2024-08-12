@@ -1,7 +1,13 @@
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:lyshoppingmain/screen/before_screen/preview_screen/preview_screen.dart';
 import 'package:lyshoppingmain/screen/entered_screen/account_page/account_page.dart';
+import 'package:lyshoppingmain/screen/entered_screen/main_page/main_page.dart';
+import 'package:lyshoppingmain/screen/entered_screen/main_page/main_page_controller.dart';
+import 'package:lyshoppingmain/screen/entered_screen/notice_page/notice_page.dart';
 
+import '../../../data/Account/Account.dart';
 import '../../../data/finaldata.dart';
 
 class main_screen extends StatefulWidget {
@@ -14,17 +20,37 @@ class main_screen extends StatefulWidget {
 class _main_screenState extends State<main_screen> {
   Widget getBody(int index) {
     if (index == 0) {
-      return preview_screen();
+      return main_page();
     }
     if (index == 1) {
       return account_page();
     }
+    if (index == 3) {
+      return notice_page();
+    }
     return Container();
   }
+
+  void get_account_data() {
+    final reference = FirebaseDatabase.instance.ref();
+    reference.child("Account").child(finaldata.account.id).onValue.listen((event) {
+      final dynamic data = event.snapshot.value;
+      finaldata.account = Account.fromJson(data);
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    get_account_data();
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       child: Scaffold(
+        backgroundColor: Color.fromARGB(255, 240, 241, 242),
         body: getBody(finaldata.currentPage),
         bottomNavigationBar: Padding(
           padding: EdgeInsets.only(left: 10, right: 10, bottom: 5),

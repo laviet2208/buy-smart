@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:lyshoppingmain/screen/before_screen/signin_screen/signin_screen.dart';
 
+import 'controller/loading_controller.dart';
+
 class loading_screen extends StatefulWidget {
   const loading_screen({super.key});
 
@@ -16,13 +18,12 @@ class _loading_screenState extends State<loading_screen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(const Duration(seconds: 8) , () => Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => signin_screen())));
   }
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    // Loading_Controller.isLogin(context);
+    Loading_Controller.isLogin(context);
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(

@@ -38,7 +38,7 @@ class other_box extends StatelessWidget {
                       child: Container(
                         alignment: Alignment.center,
                         child: AutoSizeText(
-                          (finaldata.account.createTime.day > 9 ? finaldata.account.createTime.day.toString() : '0' + finaldata.account.createTime.day.toString()) + '/' + finaldata.account.createTime.year.toString(),
+                          (finaldata.account.createTime.month > 9 ? finaldata.account.createTime.month.toString() : '0' + finaldata.account.createTime.month.toString()) + '/' + finaldata.account.createTime.year.toString(),
                           style: TextStyle(
                             fontFamily: 'sf',
                             fontSize: 100,

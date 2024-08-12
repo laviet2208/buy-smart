@@ -18,6 +18,7 @@ class _account_pageState extends State<account_page> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 240, 241, 242),
       body: Container(
         child: Stack(
           children: <Widget>[
@@ -43,8 +44,10 @@ class _account_pageState extends State<account_page> {
               left: 0,
               right: 0,
               child: Container(
-                child: ListView(
+                child: Column(
                   children: [
+                    SizedBox(height: 30,),
+
                     Padding(
                       padding: EdgeInsets.only(left: 20, right: 20),
                       child: account_page_app_bar(),
@@ -64,59 +67,78 @@ class _account_pageState extends State<account_page> {
                       child: other_box(),
                     ),
 
-                    SizedBox(height: 20,),
+                    Expanded(
+                      child: ListView(
+                        padding: EdgeInsets.zero,
+                        children: [
+                          SizedBox(height: 20,),
 
-                    Padding(
-                      padding: EdgeInsets.only(left: 30, right: 30),
-                      child: feature_button(color: Colors.black, title: 'Order history', iconData: Icons.calendar_today_outlined),
-                    ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 30, right: 30),
+                            child: feature_button(color: Colors.black, title: 'Order history', iconData: Icons.calendar_today_outlined),
+                          ),
 
-                    bottom_line(),
+                          bottom_line(),
 
-                    Padding(
-                      padding: EdgeInsets.only(left: 30, right: 30),
-                      child: feature_button(color: Colors.black, title: 'Your wallet', iconData: Icons.account_balance_wallet_outlined),
-                    ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 30, right: 30),
+                            child: feature_button(color: Colors.black, title: 'Your wallet', iconData: Icons.account_balance_wallet_outlined),
+                          ),
 
-                    bottom_line(),
+                          bottom_line(),
 
-                    Padding(
-                      padding: EdgeInsets.only(left: 30, right: 30),
-                      child: GestureDetector(
-                        child: feature_button(color: Colors.black, title: "Account's infomation", iconData: Icons.account_circle_outlined),
-                        onTap: () {
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => account_info_screen(),),);
-                        },
+                          Padding(
+                            padding: EdgeInsets.only(left: 30, right: 30),
+                            child: GestureDetector(
+                              child: feature_button(color: Colors.black, title: "Account's infomation", iconData: Icons.account_circle_outlined),
+                              onTap: () {
+                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => account_info_screen(),),);
+                              },
+                            ),
+                          ),
+
+                          bottom_line(),
+
+                          Padding(
+                            padding: EdgeInsets.only(left: 30, right: 30),
+                            child: GestureDetector(
+                              child: feature_button(color: Colors.black, title: "Your cart", iconData: Icons.shopping_cart_outlined),
+                              onTap: () {
+                                // Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => account_info_screen(),),);
+                              },
+                            ),
+                          ),
+
+                          bottom_line(),
+
+                          Padding(
+                            padding: EdgeInsets.only(left: 30, right: 30),
+                            child: GestureDetector(
+                              child: feature_button(color: Colors.black, title: "Language", iconData: Icons.language),
+                              onTap: () {
+                                // Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => account_info_screen(),),);
+                              },
+                            ),
+                          ),
+
+                          bottom_line(),
+
+                          Padding(
+                            padding: EdgeInsets.only(left: 30, right: 30),
+                            child: feature_button(color: Colors.red, title: "Sign out", iconData: Icons.logout),
+                          ),
+
+                          bottom_line(),
+
+                          Padding(
+                            padding: EdgeInsets.only(left: 30, right: 30),
+                            child: feature_button(color: Colors.red, title: "Delete account", iconData: Icons.delete_outline),
+                          ),
+
+                          SizedBox(height: 20,),
+                        ],
                       ),
                     ),
-
-                    bottom_line(),
-
-                    Padding(
-                      padding: EdgeInsets.only(left: 30, right: 30),
-                      child: GestureDetector(
-                        child: feature_button(color: Colors.black, title: "Your cart", iconData: Icons.shopping_cart_outlined),
-                        onTap: () {
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => account_info_screen(),),);
-                        },
-                      ),
-                    ),
-
-                    bottom_line(),
-
-                    Padding(
-                      padding: EdgeInsets.only(left: 30, right: 30),
-                      child: feature_button(color: Colors.red, title: "Sign out", iconData: Icons.logout),
-                    ),
-
-                    bottom_line(),
-
-                    Padding(
-                      padding: EdgeInsets.only(left: 30, right: 30),
-                      child: feature_button(color: Colors.red, title: "Delete account", iconData: Icons.delete_outline),
-                    ),
-
-                    SizedBox(height: 20,),
                   ],
                 ),
               ),

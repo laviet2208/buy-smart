@@ -1,7 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-
+import 'package:lyshoppingmain/data/Account/Account.dart';
+import 'package:lyshoppingmain/data/otherdata/Tool.dart';
+import 'package:lyshoppingmain/screen/before_screen/signin_screen/signin_screen.dart';
 import '../../../data/finaldata.dart';
+import '../../utils/utils.dart';
+import '../controller/signup_controller.dart';
 import '../signin_screen/ingredient/text_field_login.dart';
 
 class signup_screen extends StatefulWidget {
@@ -123,9 +127,16 @@ class _signup_screenState extends State<signup_screen> {
                     ),
                     onPressed: () async {
                       if (can_continue()) {
-
+                        Account account = Account(id: '', username: userController.text.toString(), password: passController.text.toString(), address: '', createTime: getCurrentTime(), money: 0, firstName: firstNameController.text.toString(), lastName: lastNameController.text.toString(), phoneNum: '', lockstatus: 1, voucherList: []);
+                        String id = (DateTime.now().hour >= 10 ? DateTime.now().hour.toString() : '0' + DateTime.now().hour.toString()) + (DateTime.now().minute >= 10 ? DateTime.now().minute.toString() : '0' + DateTime.now().minute.toString()) + (DateTime.now().second >= 10 ? DateTime.now().second.toString() : '0' + DateTime.now().second.toString()) + (DateTime.now().day >= 10 ? DateTime.now().day.toString() : '0' + DateTime.now().day.toString()) + (DateTime.now().month >= 10 ? DateTime.now().month.toString() : '0' + DateTime.now().month.toString()) + (DateTime.now().year >= 10 ? DateTime.now().year.toString() : '0' + DateTime.now().year.toString());
+                        account.id = 'TK' + id;
+                        await signup_controller.signUpPressed(account,
+                              () {setState(() {loading = true;});},
+                              () {setState(() {loading = false;});},
+                              () {setState(() {loading = false;}); toastMessage('PLease check your email to verify'); Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => signin_screen()));},
+                        );
                       } else {
-
+                        toastMessage('please fill all infomation');
                       }
                     },
                     child: Padding(
@@ -176,13 +187,17 @@ class _signup_screenState extends State<signup_screen> {
                     ),
                   ),
                 ),
+                onTap: () {
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => signin_screen()));
+                },
               ),
             ],
           ),
         ),
       ),
       onWillPop: () async {
-        return false;
+        Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => signin_screen()));
+        return true;
       },
     );
   }

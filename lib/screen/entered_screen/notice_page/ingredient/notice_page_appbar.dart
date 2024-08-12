@@ -1,9 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:lyshoppingmain/data/finaldata.dart';
 
-class slogan_and_cart extends StatelessWidget {
-  const slogan_and_cart({super.key});
+import '../../../../data/finaldata.dart';
+
+class notice_page_appbar extends StatelessWidget {
+  const notice_page_appbar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,21 +15,42 @@ class slogan_and_cart extends StatelessWidget {
       child: Stack(
         children: <Widget>[
           Positioned(
-            top: 0,
-            bottom: 0,
+            top: 10,
+            bottom: 10,
             left: 0,
-            child: Container(
-              width: (width - 40)/2,
-              child: AutoSizeText(
-                finaldata.mainLang.SmartconsumptionwithBuySmart,
-                maxLines: 2,
-                style: TextStyle(
-                  fontFamily: 'sf',
-                  fontSize: 100,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
+            child: Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 0, bottom: 0),
+                  child: Container(
+                    width: 30,
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: Icon(
+                        Icons.notifications_active_outlined,
+                        size: 30,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+
+                SizedBox(width: 10,),
+
+                Container(
+                  width: (width - 40)/2,
+                  child: AutoSizeText(
+                    "Notice",
+                    maxLines: 2,
+                    style: TextStyle(
+                      fontFamily: 'sf',
+                      fontSize: 100,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
 
@@ -69,9 +91,14 @@ class slogan_and_cart extends StatelessWidget {
                     padding: EdgeInsets.only(top: 10, bottom: 10),
                     child: Container(
                       width: 35,
+                      height: 35,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
-                        border: Border.all(width: 0.5),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(5),
+                        child: finaldata.avatarUrl == '' ? Image.asset('assets/image/product_type_example/ava_example.png', fit: BoxFit.cover,) :
+                        Image.network(finaldata.avatarUrl, fit: BoxFit.cover,),
                       ),
                     ),
                   ),

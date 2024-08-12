@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:lyshoppingmain/data/finaldata.dart';
 
 class account_info extends StatelessWidget {
   const account_info({super.key});
@@ -14,6 +15,7 @@ class account_info extends StatelessWidget {
         children: [
           Container(
             width: 80,
+            height: 80,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(1000),
@@ -30,7 +32,8 @@ class account_info extends StatelessWidget {
               padding: EdgeInsets.all(2),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(1000),
-                child: Image.asset('assets/image/product_type_example/ava_example.png', fit: BoxFit.cover,),
+                child: finaldata.avatarUrl == '' ? Image.asset('assets/image/product_type_example/ava_example.png', fit: BoxFit.cover,) :
+                Image.network(finaldata.avatarUrl, fit: BoxFit.cover,),
               ),
             ),
           ),
@@ -47,7 +50,7 @@ class account_info extends StatelessWidget {
                     height: 30,
                     alignment: Alignment.centerLeft,
                     child: AutoSizeText(
-                      'Hoang Viet La Trinh',
+                      finaldata.account.lastName + ' ' + finaldata.account.firstName,
                       style: TextStyle(
                         fontFamily: 'sf',
                         color: Colors.black,

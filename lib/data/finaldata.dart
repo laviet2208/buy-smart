@@ -2,10 +2,11 @@ import 'package:lyshoppingmain/data/language/Multi_language.dart';
 import 'package:lyshoppingmain/data/otherdata/Time.dart';
 
 import 'Account/Account.dart';
+import 'noticeData/noticeData.dart';
 
 class finaldata {
-  static Account account = Account(id: '', username: 'tuanphuongviet2208@gmail.com', password: '123456@', address: 'Hateco Apollo Phuong Canh, Nam Tu Liem, Ha Noi', createTime: Time(second: 0, minute: 0, hour: 0, day: 4, month: 8, year: 2024), money: 200, firstName: 'La Trinh', lastName: 'Hoang Viet', phoneNum: '886163653', lockstatus: 1, voucherList: []);
-
+  static Account account = Account(id: '', username: '', password: '', address: '', createTime: Time(second: 0, minute: 0, hour: 0, day: 4, month: 8, year: 2024), money: 200, firstName: '', lastName: '', phoneNum: '', lockstatus: 1, voucherList: []);
+  static String avatarUrl = '';
   static Multi_language en = Multi_language(
     WelcomeBack: 'Welcome Back',
     Loginwithyouraccounttocontinue: 'Login with your account to continue.',
@@ -77,5 +78,9 @@ class finaldata {
     'Smart Phone',
     'Suit & Vest',
     'Clothes',
+  ];
+
+  static List<noticeData> noticeList = [
+    noticeData(id: 'abc', title: 'Buy Smart open graning', sub: 'Buy Smart open graning', create: Time(second: 0, minute: 15, hour: 17, day: 4, month: 8, year: 2024), send: Time(second: 0, minute: 15, hour: 17, day: 4, month: 8, year: 2024), status: 1, content: 'Buy Smart open graning'),
   ];
 }

@@ -1,11 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:lyshoppingmain/data/finaldata.dart';
 
-import '../../../../../data/finaldata.dart';
-import '../../../main_screen/main_screen.dart';
-
-class account_info_app_bar extends StatelessWidget {
-  const account_info_app_bar({super.key});
+class slogan_and_cart extends StatelessWidget {
+  const slogan_and_cart({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,52 +14,21 @@ class account_info_app_bar extends StatelessWidget {
       child: Stack(
         children: <Widget>[
           Positioned(
-            top: 10,
-            bottom: 10,
+            top: 0,
+            bottom: 0,
             left: 0,
-            child: Row(
-              children: [
-                GestureDetector(
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 0, bottom: 0),
-                    child: Container(
-                      width: 35,
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.3),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Container(
-                        alignment: Alignment.center,
-                        child: Icon(
-                          Icons.chevron_left,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                  ),
-                  onTap: () {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => main_screen(),),);
-                  },
+            child: Container(
+              width: (width - 40)/2,
+              child: AutoSizeText(
+                finaldata.mainLang.SmartconsumptionwithBuySmart,
+                maxLines: 2,
+                style: TextStyle(
+                  fontFamily: 'sf',
+                  fontSize: 100,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
                 ),
-
-                SizedBox(width: 10,),
-
-                Container(
-                  width: (width - 40)/2,
-                  padding: EdgeInsets.only(top: 4, bottom: 4),
-                  child: AutoSizeText(
-                    "Your account",
-                    maxLines: 2,
-                    style: TextStyle(
-                      fontFamily: 'sf',
-                      fontSize: 100,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
 

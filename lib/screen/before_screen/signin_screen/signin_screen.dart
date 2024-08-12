@@ -1,7 +1,13 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:lyshoppingmain/data/finaldata.dart';
+import 'package:lyshoppingmain/screen/before_screen/preview_screen/preview_screen.dart';
 import 'package:lyshoppingmain/screen/before_screen/signin_screen/ingredient/text_field_login.dart';
+import 'package:lyshoppingmain/screen/before_screen/signup_screen/signup_screen.dart';
+import 'package:lyshoppingmain/screen/entered_screen/main_screen/main_screen.dart';
+import 'package:lyshoppingmain/screen/utils/utils.dart';
+
+import '../controller/signin_controller.dart';
 
 class signin_screen extends StatefulWidget {
   const signin_screen({super.key});
@@ -126,9 +132,12 @@ class _signin_screenState extends State<signin_screen> {
                     ),
                     onPressed: () async {
                       if (can_continue()) {
-
+                        setState(() {loading = true;});
+                        await signin_controller.loginHandle(userController.text.toString(), passController.text.toString(),
+                              () {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => main_screen()),);},
+                              () {setState(() {loading = false;});},);
                       } else {
-
+                        toastMessage('Please fill all information and try again');
                       }
                     },
                     child: Padding(
@@ -179,13 +188,17 @@ class _signin_screenState extends State<signin_screen> {
                     ),
                   ),
                 ),
+                onTap: () {
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => signup_screen()));
+                },
               ),
             ],
           ),
         ),
       ),
       onWillPop: () async {
-        return false;
+        Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => preview_screen()));
+        return true;
       },
     );
   }
