@@ -10,16 +10,16 @@ import 'screen/entered_screen/main_screen/main_screen.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: FirebaseOptions(
-        apiKey: "AIzaSyC6JdUqnd_7iIzehRlQ3w47j_mT7heI8no",
-        authDomain: "ly-s-shopping.firebaseapp.com",
-        databaseURL: "https://ly-s-shopping-default-rtdb.firebaseio.com",
-        projectId: "ly-s-shopping",
-        storageBucket: "ly-s-shopping.appspot.com",
-        messagingSenderId: "217543052939",
-        appId: "1:217543052939:web:c31f88567af02c94a40e8e",
-        measurementId: "G-B2TH1RNX84",
-      ),
+    // options: FirebaseOptions(
+    //     apiKey: "AIzaSyC6JdUqnd_7iIzehRlQ3w47j_mT7heI8no",
+    //     authDomain: "ly-s-shopping.firebaseapp.com",
+    //     databaseURL: "https://ly-s-shopping-default-rtdb.firebaseio.com",
+    //     projectId: "ly-s-shopping",
+    //     storageBucket: "ly-s-shopping.appspot.com",
+    //     messagingSenderId: "217543052939",
+    //     appId: "1:217543052939:web:c31f88567af02c94a40e8e",
+    //     measurementId: "G-B2TH1RNX84",
+    //   ),
   );
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String? language = prefs.getString('language');

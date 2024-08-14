@@ -1,10 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:lyshoppingmain/screen/before_screen/preview_screen/preview_screen.dart';
 import 'package:lyshoppingmain/screen/entered_screen/account_page/account_page.dart';
 import 'package:lyshoppingmain/screen/entered_screen/main_page/main_page.dart';
-import 'package:lyshoppingmain/screen/entered_screen/main_page/main_page_controller.dart';
 import 'package:lyshoppingmain/screen/entered_screen/notice_page/notice_page.dart';
 import 'package:lyshoppingmain/screen/entered_screen/search_page/search_page.dart';
 import 'package:lyshoppingmain/screen/entered_screen/voucher_page/voucher_page.dart';

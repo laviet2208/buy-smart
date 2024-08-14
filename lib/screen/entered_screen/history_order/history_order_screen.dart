@@ -78,9 +78,10 @@ class _history_order_screenState extends State<history_order_screen> {
                       decoration: BoxDecoration(
                         color: Colors.white,
                       ),
+                      alignment: Alignment.center,
                       child: Padding(
                         padding: EdgeInsets.only(left: 15, right: 15),
-                        child: ListView(
+                        child: orderList.length != 0 ? ListView(
                           padding: EdgeInsets.zero,
                           children: [
                             SizedBox(height: 10,),
@@ -97,7 +98,7 @@ class _history_order_screenState extends State<history_order_screen> {
                               ),
                             ),
                           ],
-                        ),
+                        ) : Text('There are no orders here!', style: TextStyle(fontSize: 14,color: Colors.black),),
                       ),
                     ),
                     onRefresh: _refresh,
