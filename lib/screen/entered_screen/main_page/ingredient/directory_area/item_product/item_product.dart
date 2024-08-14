@@ -93,25 +93,25 @@ class _item_productState extends State<item_product> {
             ),
           ),
 
-          Positioned(
-            top: 10,
-            left: 10,
-            child: Container(
-              width: 35,
-              height: 35,
-              decoration: BoxDecoration(
-                color: Colors.blueGrey.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(1000),
-              ),
-              child: Center(
-                child: Icon(
-                  Icons.favorite_border,
-                  color: Colors.black,
-                  size: 20,
-                ),
-              ),
-            ),
-          ),
+          // Positioned(
+          //   top: 10,
+          //   left: 10,
+          //   child: Container(
+          //     width: 35,
+          //     height: 35,
+          //     decoration: BoxDecoration(
+          //       color: Colors.grey.withOpacity(0.6),
+          //       borderRadius: BorderRadius.circular(1000),
+          //     ),
+          //     child: Center(
+          //       child: Icon(
+          //         Icons.favorite_border,
+          //         color: Colors.black,
+          //         size: 20,
+          //       ),
+          //     ),
+          //   ),
+          // ),
 
           Positioned(
             top: 8 + width - 10,
@@ -142,7 +142,7 @@ class _item_productState extends State<item_product> {
                 Padding(
                   padding: EdgeInsets.only(left: 0, right: 50),
                   child: Text(
-                    '1000.USDT',
+                    getStringNumber(product.cost) + '.USDT',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
@@ -194,7 +194,7 @@ class _item_productState extends State<item_product> {
           Positioned(
             bottom: 0,
             right: 0,
-            child: add_to_cart_button(),
+            child: add_to_cart_button(product: product,),
           ),
         ],
       ),

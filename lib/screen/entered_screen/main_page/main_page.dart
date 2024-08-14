@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:lyshoppingmain/data/final_mainpage_data/final_mainpage_data.dart';
+import 'package:lyshoppingmain/data/finaldata.dart';
 
 import '../../../data/AdsData/AdsData.dart';
 import '../../../data/product/ProductDirectory.dart';
@@ -13,7 +14,8 @@ import 'ingredient/slogan_and_cart.dart';
 import 'main_page_controller.dart';
 
 class main_page extends StatefulWidget {
-  const main_page({super.key});
+  final VoidCallback event;
+  const main_page({super.key, required this.event});
 
   @override
   State<main_page> createState() => _main_pageState();
@@ -104,7 +106,13 @@ class _main_pageState extends State<main_page> {
 
                         Padding(
                           padding: EdgeInsets.only(left: 20, right: 20),
-                          child: search_box(),
+                          child: GestureDetector(
+                            child: search_box(),
+                            onTap: () {
+                              finaldata.currentPage = 2;
+                              widget.event();
+                            },
+                          ),
                         ),
 
                         !loading ? Container(

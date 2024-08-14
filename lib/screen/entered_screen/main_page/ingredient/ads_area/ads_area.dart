@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lyshoppingmain/screen/entered_screen/main_page/ingredient/ads_area/item_ads.dart';
+import 'package:lyshoppingmain/screen/entered_screen/main_screen/main_screen.dart';
+import 'package:lyshoppingmain/screen/entered_screen/product_view_screen/product_view_screen.dart';
 import '../../../../../data/AdsData/AdsData.dart';
 
 class ads_area extends StatelessWidget {
@@ -17,9 +19,14 @@ class ads_area extends StatelessWidget {
           itemCount: adsList.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
-            return Padding(
-              padding: EdgeInsets.only(right: 15),
-              child: item_ads(adsData: adsList[index], url: imgList[index],),
+            return GestureDetector(
+              child: Padding(
+                padding: EdgeInsets.only(right: 15),
+                child: item_ads(adsData: adsList[index], url: imgList[index],),
+              ),
+              onTap: () {
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => product_view_screen(id: adsList[index].productId, beforeWidget: main_screen())),);
+              },
             );
           },
         ),

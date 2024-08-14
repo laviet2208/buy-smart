@@ -1,10 +1,15 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../data/finaldata.dart';
+import '../../cart_screen/cart_screen.dart';
+import '../../main_screen/main_screen.dart';
+
 class product_type_viewall_appbar extends StatelessWidget {
   final String title;
   final Widget beforeWidget;
-  const product_type_viewall_appbar({super.key, required this.title, required this.beforeWidget});
+  final Widget currentWidget;
+  const product_type_viewall_appbar({super.key, required this.title, required this.beforeWidget, required this.currentWidget});
 
   @override
   Widget build(BuildContext context) {
@@ -48,36 +53,43 @@ class product_type_viewall_appbar extends StatelessWidget {
 
           Expanded(child: Container()),
 
-          Container(
-            width: 35,
-            height: 35,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              color: Colors.white.withOpacity(0.3),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(0),
-              child: Container(
-                alignment: Alignment.center,
-                child: Icon(
-                  Icons.shopping_cart_outlined,
-                  color: Colors.black,
-                  size: 20,
+          GestureDetector(
+            child: Container(
+              width: 35,
+              height: 35,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                color: Colors.white.withOpacity(0.3),
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(0),
+                child: Container(
+                  alignment: Alignment.center,
+                  child: Icon(
+                    Icons.shopping_cart_outlined,
+                    color: Colors.black,
+                    size: 20,
+                  ),
                 ),
               ),
             ),
+            onTap: () {
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => cart_screen(beforeWidget: currentWidget)),);
+            },
           ),
 
           SizedBox(width: 15,),
 
           Container(
             width: 35,
+            height: 35,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(5),
-              child: Image.asset('assets/image/product_type_example/ava_example.png', fit: BoxFit.fitWidth,),
+              child: finaldata.avatarUrl == '' ? Image.asset('assets/image/product_type_example/ava_example.png', fit: BoxFit.cover,) :
+              Image.network(finaldata.avatarUrl, fit: BoxFit.cover,),
             ),
           ),
         ],

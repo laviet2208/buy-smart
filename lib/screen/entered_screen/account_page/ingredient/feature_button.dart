@@ -14,6 +14,9 @@ class feature_button extends StatelessWidget {
     return Container(
       width: width,
       height: height,
+      decoration: BoxDecoration(
+        color: Colors.transparent,
+      ),
       child: Padding(
         padding: EdgeInsets.only(top: 23, bottom: 23),
         child: Row(

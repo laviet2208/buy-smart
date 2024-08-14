@@ -55,7 +55,7 @@ class other_box extends StatelessWidget {
                       height: 20,
                       alignment: Alignment.bottomCenter,
                       child: AutoSizeText(
-                        'Create time',
+                        finaldata.mainLang.createtime,
                         style: TextStyle(
                           fontFamily: 'sf',
                           fontSize: 100,
@@ -93,7 +93,7 @@ class other_box extends StatelessWidget {
                       height: 20,
                       alignment: Alignment.bottomCenter,
                       child: AutoSizeText(
-                        'Your vouchers',
+                        finaldata.mainLang.yourvoucher,
                         style: TextStyle(
                           fontFamily: 'sf',
                           fontSize: 100,
@@ -114,7 +114,7 @@ class other_box extends StatelessWidget {
                         child: Container(
                           alignment: Alignment.center,
                           child: AutoSizeText(
-                            '0',
+                            finaldata.cartList.length.toString(),
                             style: TextStyle(
                               fontFamily: 'sf',
                               fontSize: 100,
@@ -131,7 +131,7 @@ class other_box extends StatelessWidget {
                         height: 20,
                         alignment: Alignment.bottomCenter,
                         child: AutoSizeText(
-                          'Your cart',
+                          finaldata.mainLang.cart,
                           style: TextStyle(
                             fontFamily: 'sf',
                             fontSize: 100,

@@ -30,6 +30,7 @@ class _item_product_typeState extends State<item_product_type> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return GestureDetector(
       child: Container(
         height: 120,
@@ -46,37 +47,62 @@ class _item_product_typeState extends State<item_product_type> {
             ),
           ],
         ),
-        child: Column(
-          children: [
-            SizedBox(height: 20,),
-
-            Padding(
-              padding: EdgeInsets.only(left: 20, right: 20),
+        child: Stack(
+          children: <Widget>[
+            Positioned(
+              top: 0,
+              bottom: 0,
+              left: 0,
+              right: 0,
               child: Container(
-                height: 50,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(url),
-                  ),
+                child: Column(
+                  children: [
+                    SizedBox(height: 20,),
+
+                    Padding(
+                      padding: EdgeInsets.only(left: 20, right: 20),
+                      child: Container(
+                        height: 50,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(url),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(height: 8,),
+
+                    Padding(
+                      padding: EdgeInsets.only(left: 10, right: 10),
+                      child: Container(
+                        child: Text(
+                          widget.productType.name,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontFamily: 'sf',
+                            color: Colors.black,
+                            fontSize: width/33,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
 
-            SizedBox(height: 8,),
-
-            Padding(
-              padding: EdgeInsets.only(left: 10, right: 10),
-              child: Container(
-                height: 15,
-                child: AutoSizeText(
-                  widget.productType.name,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontFamily: 'sf',
-                    color: Colors.grey,
-                    fontSize: 100,
-                  ),
+            Positioned(
+              top: 0,
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: GestureDetector(
+                child: Container(
+                  decoration: BoxDecoration(color: Colors.transparent,),
                 ),
               ),
             ),

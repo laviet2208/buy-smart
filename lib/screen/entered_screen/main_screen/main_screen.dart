@@ -6,9 +6,12 @@ import 'package:lyshoppingmain/screen/entered_screen/account_page/account_page.d
 import 'package:lyshoppingmain/screen/entered_screen/main_page/main_page.dart';
 import 'package:lyshoppingmain/screen/entered_screen/main_page/main_page_controller.dart';
 import 'package:lyshoppingmain/screen/entered_screen/notice_page/notice_page.dart';
+import 'package:lyshoppingmain/screen/entered_screen/search_page/search_page.dart';
+import 'package:lyshoppingmain/screen/entered_screen/voucher_page/voucher_page.dart';
 
 import '../../../data/Account/Account.dart';
 import '../../../data/finaldata.dart';
+import '../search_page/controller/controller.dart';
 
 class main_screen extends StatefulWidget {
   const main_screen({super.key});
@@ -20,13 +23,19 @@ class main_screen extends StatefulWidget {
 class _main_screenState extends State<main_screen> {
   Widget getBody(int index) {
     if (index == 0) {
-      return main_page();
+      return main_page(event: () {setState(() {});},);
     }
     if (index == 1) {
       return account_page();
     }
+    if (index == 2) {
+      return search_page();
+    }
     if (index == 3) {
       return notice_page();
+    }
+    if (index == 4) {
+      return voucher_page();
     }
     return Container();
   }
@@ -39,11 +48,19 @@ class _main_screenState extends State<main_screen> {
     });
   }
 
+  Future<void> get_all_product() async {
+    if (finaldata.productList.length == 0) {
+      finaldata.productList = await search_page_controller.get_product_list();
+      print('Số lượng: ' + finaldata.productList.length.toString());
+    }
+  }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     get_account_data();
+    get_all_product();
   }
 
   @override

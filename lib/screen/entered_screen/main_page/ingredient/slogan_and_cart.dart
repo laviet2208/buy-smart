@@ -1,6 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:lyshoppingmain/data/finaldata.dart';
+import 'package:lyshoppingmain/screen/entered_screen/cart_screen/cart_screen.dart';
+import 'package:lyshoppingmain/screen/entered_screen/main_screen/main_screen.dart';
 
 class slogan_and_cart extends StatelessWidget {
   const slogan_and_cart({super.key});
@@ -43,23 +45,28 @@ class slogan_and_cart extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(top: 10, bottom: 10),
-                    child: Container(
-                      width: 35,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: Colors.white.withOpacity(0.3),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(0),
-                        child: Container(
-                          alignment: Alignment.center,
-                          child: Icon(
-                            Icons.shopping_cart_outlined,
-                            color: Colors.black,
-                            size: 20,
+                    child: GestureDetector(
+                      child: Container(
+                        width: 35,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.white.withOpacity(0.3),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(0),
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Icon(
+                              Icons.shopping_cart_outlined,
+                              color: Colors.black,
+                              size: 20,
+                            ),
                           ),
                         ),
                       ),
+                      onTap: () {
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => cart_screen(beforeWidget: main_screen())),);
+                      },
                     ),
                   ),
 

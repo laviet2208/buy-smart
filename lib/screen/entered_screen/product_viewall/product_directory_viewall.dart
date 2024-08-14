@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lyshoppingmain/data/product/ProductDirectory.dart';
 
 import '../main_page/ingredient/directory_area/item_product/item_product.dart';
+import '../product_view_screen/product_view_screen.dart';
 import 'ingredient/product_type_viewall_appbar.dart';
 
 class product_directory_viewall extends StatefulWidget {
@@ -53,14 +54,14 @@ class _product_directory_viewallState extends State<product_directory_viewall> {
                   appBar: AppBar(
                     surfaceTintColor: Colors.transparent,
                     backgroundColor: Colors.transparent,
-                    title: product_type_viewall_appbar(title: widget.productDirectory.name, beforeWidget: widget.beforeWidget),
+                    title: product_type_viewall_appbar(title: widget.productDirectory.name, beforeWidget: widget.beforeWidget, currentWidget: widget,),
                   ),
                   backgroundColor: Colors.transparent,
                   body: Container(
                     child: RefreshIndicator(
                       onRefresh: _refresh,
                       child: Container(
-                        child: ListView(
+                        child: widget.productDirectory.productList.length != 0 ? ListView(
                           children: [
                             SizedBox(height: 10,),
 
@@ -77,7 +78,12 @@ class _product_directory_viewallState extends State<product_directory_viewall> {
                                   ),
                                   itemCount: widget.productDirectory.productList.length,
                                   itemBuilder: (context, index) {
-                                    return item_product(id: widget.productDirectory.productList[index]);
+                                    return GestureDetector(
+                                      child: item_product(id: widget.productDirectory.productList[index]),
+                                      onTap: () {
+                                        Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => product_view_screen(id: widget.productDirectory.productList[index], beforeWidget: widget)));
+                                      },
+                                    );
                                   },
                                 ),
                               ),
@@ -85,7 +91,7 @@ class _product_directory_viewallState extends State<product_directory_viewall> {
 
                             SizedBox(height: 30,),
                           ],
-                        ),
+                        ) : Text('There is not any products in here!', style: TextStyle(fontSize: 12, color: Colors.black),),
                       ),
                     ),
                   ),

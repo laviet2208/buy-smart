@@ -1,33 +1,35 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:lyshoppingmain/screen/before_screen/loading_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import 'data/finaldata.dart';
 import 'screen/entered_screen/account_page/account_info_screen/account_info_screen.dart';
 import 'screen/entered_screen/main_screen/main_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    // options: FirebaseOptions(
-    //       apiKey: "AIzaSyD-09bxgKHW4FKs3xfZ2QijmEYIhTkHtz8",
-    //       authDomain: "masuship-5b377.firebaseapp.com",
-    //       databaseURL: "https://masuship-5b377-default-rtdb.firebaseio.com",
-    //       projectId: "masuship-5b377",
-    //       storageBucket: "masuship-5b377.appspot.com",
-    //       messagingSenderId: "788990781107",
-    //       appId: "1:788990781107:web:95d970ed04837970df72c6",
-    //       measurementId: "G-7ZRQF8P3MS"
-    //   ),
+    options: FirebaseOptions(
+        apiKey: "AIzaSyC6JdUqnd_7iIzehRlQ3w47j_mT7heI8no",
+        authDomain: "ly-s-shopping.firebaseapp.com",
+        databaseURL: "https://ly-s-shopping-default-rtdb.firebaseio.com",
+        projectId: "ly-s-shopping",
+        storageBucket: "ly-s-shopping.appspot.com",
+        messagingSenderId: "217543052939",
+        appId: "1:217543052939:web:c31f88567af02c94a40e8e",
+        measurementId: "G-B2TH1RNX84",
+      ),
   );
-  // SharedPreferences prefs = await SharedPreferences.getInstance();
-  // String? language = prefs.getString('language');
-  // if (language != null) {
-  //   if (language == 'ENG') {
-  //     finaldata.mainlanguage = finaldata.en;
-  //   } else {
-  //     finaldata.mainlanguage = finaldata.vi;
-  //   }
-  // }
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String? language = prefs.getString('language');
+  if (language != null) {
+    if (language == 'ENG') {
+      finaldata.mainLang = finaldata.en;
+    } else {
+      finaldata.mainLang = finaldata.vi;
+    }
+  }
   runApp(const MyApp());
 }
 

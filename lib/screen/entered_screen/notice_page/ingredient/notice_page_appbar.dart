@@ -67,21 +67,6 @@ class notice_page_appbar extends StatelessWidget {
                     padding: EdgeInsets.only(top: 10, bottom: 10),
                     child: Container(
                       width: 35,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: Colors.white.withOpacity(0.3),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(0),
-                        child: Container(
-                          alignment: Alignment.center,
-                          child: Icon(
-                            Icons.shopping_cart_outlined,
-                            color: Colors.black,
-                            size: 20,
-                          ),
-                        ),
-                      ),
                     ),
                   ),
 

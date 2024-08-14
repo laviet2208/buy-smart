@@ -2,6 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../data/finaldata.dart';
+import '../../cart_screen/cart_screen.dart';
+import '../../main_screen/main_screen.dart';
 
 class account_page_app_bar extends StatelessWidget {
   const account_page_app_bar({super.key});
@@ -65,23 +67,28 @@ class account_page_app_bar extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(top: 10, bottom: 10),
-                    child: Container(
-                      width: 35,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: Colors.white.withOpacity(0.3),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(0),
-                        child: Container(
-                          alignment: Alignment.center,
-                          child: Icon(
-                            Icons.shopping_cart_outlined,
-                            color: Colors.black,
-                            size: 20,
+                    child: GestureDetector(
+                      child: Container(
+                        width: 35,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.white.withOpacity(0.3),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(0),
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Icon(
+                              Icons.shopping_cart_outlined,
+                              color: Colors.black,
+                              size: 20,
+                            ),
                           ),
                         ),
                       ),
+                      onTap: () {
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => cart_screen(beforeWidget: main_screen())),);
+                      },
                     ),
                   ),
 

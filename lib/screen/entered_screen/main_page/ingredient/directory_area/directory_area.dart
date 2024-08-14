@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lyshoppingmain/data/product/ProductDirectory.dart';
 import 'package:lyshoppingmain/screen/entered_screen/main_page/ingredient/directory_area/item_product/item_product.dart';
 import 'package:lyshoppingmain/screen/entered_screen/main_screen/main_screen.dart';
+import 'package:lyshoppingmain/screen/entered_screen/product_view_screen/product_view_screen.dart';
 import 'package:lyshoppingmain/screen/entered_screen/product_viewall/product_directory_viewall.dart';
 
 class directory_area extends StatelessWidget {
@@ -89,9 +90,14 @@ class directory_area extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   padding: EdgeInsets.only(left: 5, top: 4, bottom: 4),
                   itemBuilder: (context, index) {
-                    return Padding(
-                      padding: EdgeInsets.only(right: 10),
-                      child: item_product(id: productDirectory.productList[index]),
+                    return GestureDetector(
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 10),
+                        child: item_product(id: productDirectory.productList[index]),
+                      ),
+                      onTap: () {
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => product_view_screen(id: productDirectory.productList[index], beforeWidget: main_screen())));
+                      },
                     );
                   },
                 ) : Text('There is not any products in here!', style: TextStyle(fontSize: 12, color: Colors.grey),),
