@@ -1,4 +1,6 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:lyshoppingmain/screen/utils/utils.dart';
 import '../../../../data/finaldata.dart';
 import '../../../../data/orderData/Order.dart';
 import '../../../../data/otherdata/Tool.dart';
@@ -137,6 +139,49 @@ class _his_order_itemState extends State<his_order_item> {
               ),
             ),
           ),
+
+          (widget.order.status == 'A' || widget.order.status == 'B') ? TextButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text('Cancel Order'),
+                    content: Text('Are you sure you want to cancel this order?'),
+                    actions: <Widget>[
+                      TextButton(
+                        child: Text('No', style: TextStyle(color: Colors.blue),),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                      TextButton(
+                        child: Text('Yes', style: TextStyle(color: Colors.red),),
+                        onPressed: () async {
+                          DatabaseReference databaseRef = FirebaseDatabase.instance.ref();
+                          await databaseRef.child('Order').child(widget.order.id).child('status').set('D');
+                          toastMessage('Cancel success');
+                          widget.order.status = 'D';
+                          setState(() {
+                            get_status();
+                          });
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
+            child: Text(
+              'Cancel this order',
+              style: TextStyle(
+                fontFamily: 'muli',
+                color: Colors.redAccent,
+                fontSize: width/25,
+              ),
+            ),
+          ) : Container(height: 0,),
 
           Padding(
             padding: EdgeInsets.only(left: 0, right: 0),

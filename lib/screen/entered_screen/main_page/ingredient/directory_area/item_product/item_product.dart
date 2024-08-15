@@ -159,7 +159,7 @@ class _item_productState extends State<item_product> {
                 Padding(
                   padding: EdgeInsets.only(left: 0, right: 50),
                   child: RichText(
-                    text: TextSpan(
+                    text: product.costBeforeSale > product.cost ? TextSpan(
                       children: <TextSpan>[
                         TextSpan(
                           text: getStringNumber(product.costBeforeSale) + '. USDT',
@@ -176,6 +176,18 @@ class _item_productState extends State<item_product> {
 
                         TextSpan(
                           text: ' . ' + calculateDiscountPercentage(product.costBeforeSale, product.cost).toString() + '% off',
+                          style: TextStyle(
+                            fontSize: width/16,
+                            fontFamily: 'muli',
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ) : TextSpan(
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: 'Maximum savings',
                           style: TextStyle(
                             fontSize: width/16,
                             fontFamily: 'muli',

@@ -67,7 +67,18 @@ class name_and_cost extends StatelessWidget {
                   fontSize: width/30,
                 ),
               ),
-            ) : Container(),
+            ) : Container(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'You will save maximum when purchasing',
+                style: TextStyle(
+                  fontFamily: 'muli',
+                  color: Colors.grey,
+                  fontWeight: FontWeight.normal,
+                  fontSize: width/30,
+                ),
+              ),
+            ),
 
             SizedBox(height: 5,),
 
@@ -86,7 +97,7 @@ class name_and_cost extends StatelessWidget {
 
             SizedBox(height: 5,),
 
-            Container(
+            product.costBeforeSale > product.cost ? Container(
               alignment: Alignment.centerLeft,
               child: RichText(
                 text: TextSpan(
@@ -112,7 +123,7 @@ class name_and_cost extends StatelessWidget {
                     ]
                 ),
               ),
-            ),
+            ) : Container(height: 0,),
           ],
         ),
       ),

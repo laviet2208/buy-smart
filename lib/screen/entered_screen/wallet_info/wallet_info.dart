@@ -1,5 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:lyshoppingmain/screen/entered_screen/wallet_info/ingredient/Deposit_requirements_form/Deposit_requirements_form.dart';
+import 'package:lyshoppingmain/screen/entered_screen/wallet_info/ingredient/Withdrawal_requirements_form/Withdrawal_requirements_form.dart';
 import '../../../../../data/finaldata.dart';
 import '../../../data/historyData/Transaction.dart';
 import '../../../data/otherdata/Tool.dart';
@@ -91,6 +93,51 @@ class _wallet_infoState extends State<wallet_info> {
                             SizedBox(height: 10,),
 
                             text_line_in_profile(title: finaldata.mainLang.youraccountbalance, content: getStringNumber(finaldata.account.money) + ' .USDT'),
+
+                            Container(
+                              alignment: Alignment.centerLeft,
+                              child: Row(
+                                children: [
+                                  TextButton(
+                                    child: Text(
+                                      'Deposit requirements',
+                                      style: TextStyle(
+                                        color: Colors.blueAccent,
+                                        fontFamily: 'sf',
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return Deposit_requirements_form();
+                                        },
+                                      );
+                                    },
+                                  ),
+
+                                  TextButton(
+                                    child: Text(
+                                      'Request a withdrawal',
+                                      style: TextStyle(
+                                        color: Colors.redAccent,
+                                        fontFamily: 'sf',
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return Withdrawal_requirements_form();
+                                        },
+                                      );
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ),
 
                             SizedBox(height: 20,),
 
