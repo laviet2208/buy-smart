@@ -81,7 +81,7 @@ class _product_type_viewallState extends State<product_type_viewall> {
                                   itemCount: widget.productType.productList.length,
                                   itemBuilder: (context, index) {
                                     return GestureDetector(
-                                      child: item_product(id: widget.productType.productList[index]),
+                                      child: item_product(id: widget.productType.productList[index], productList: widget.productType.productList, event: () {setState(() {});},),
                                       onTap: () {
                                         Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => product_view_screen(id: widget.productType.productList[index], beforeWidget: widget)));
                                       },

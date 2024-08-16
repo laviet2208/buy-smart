@@ -93,7 +93,7 @@ class directory_area extends StatelessWidget {
                     return GestureDetector(
                       child: Padding(
                         padding: EdgeInsets.only(right: 10),
-                        child: item_product(id: productDirectory.productList[index]),
+                        child: item_product(id: productDirectory.productList[index], productList: productDirectory.productList, event: () {},),
                       ),
                       onTap: () {
                         Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => product_view_screen(id: productDirectory.productList[index], beforeWidget: main_screen())));

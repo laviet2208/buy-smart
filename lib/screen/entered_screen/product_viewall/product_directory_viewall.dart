@@ -80,7 +80,7 @@ class _product_directory_viewallState extends State<product_directory_viewall> {
                                   itemCount: widget.productDirectory.productList.length,
                                   itemBuilder: (context, index) {
                                     return GestureDetector(
-                                      child: item_product(id: widget.productDirectory.productList[index]),
+                                      child: item_product(id: widget.productDirectory.productList[index], productList: widget.productDirectory.productList, event: () {setState(() {});},),
                                       onTap: () {
                                         Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => product_view_screen(id: widget.productDirectory.productList[index], beforeWidget: widget)));
                                       },

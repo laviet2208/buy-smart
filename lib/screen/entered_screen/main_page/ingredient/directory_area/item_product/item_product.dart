@@ -8,7 +8,9 @@ import 'add_to_cart_button.dart';
 
 class item_product extends StatefulWidget {
   final String id;
-  const item_product({super.key, required this.id});
+  final List<String> productList;
+  final VoidCallback event;
+  const item_product({super.key, required this.id, required this.productList, required this.event});
 
   @override
   State<item_product> createState() => _item_productState();
@@ -31,19 +33,18 @@ class _item_productState extends State<item_product> {
     DatabaseEvent snapshot = await reference.child("productList").child(widget.id).once();
     final dynamic data = snapshot.snapshot.value;
     product = Product.fromJson(data);
-    _getImageURL();
-    setState(() {
+    if (product.showStatus == 0) {
+      widget.productList.remove(product.id);
+      widget.event();
+      setState(() {
 
-    });
-    // final reference = FirebaseDatabase.instance.ref();
-    // reference.child("productList").child(widget.id).onValue.listen((event) {
-    //   final dynamic orders = event.snapshot.value;
-    //   product = Product.fromJson(orders);
-    //   _getImageURL();
-    //   setState(() {
-    //
-    //   });
-    // });
+      });
+    } else {
+      _getImageURL();
+      setState(() {
+
+      });
+    }
   }
 
   @override
@@ -51,7 +52,9 @@ class _item_productState extends State<item_product> {
     // TODO: implement initState
     super.initState();
     getData();
-    _getImageURL();
+    if (product.showStatus != 0) {
+      _getImageURL();
+    }
   }
 
   @override
