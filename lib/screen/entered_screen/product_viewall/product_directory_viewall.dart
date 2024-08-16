@@ -70,6 +70,7 @@ class _product_directory_viewallState extends State<product_directory_viewall> {
                                 padding: EdgeInsets.only(left: 15, right: 15),
                                 child: GridView.builder(
                                   shrinkWrap: true,
+                                  physics: NeverScrollableScrollPhysics(),
                                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 2, // số phần tử trên mỗi hàng
                                     mainAxisSpacing: 20, // khoảng cách giữa các hàng

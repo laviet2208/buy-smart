@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lyshoppingmain/screen/entered_screen/voucher_page/ingredient/voucher_individual_img_item.dart';
 
 import '../../../../data/finaldata.dart';
 import 'voucher_individual_item.dart';
@@ -46,7 +47,7 @@ class _individual_voucher_pageState extends State<individual_voucher_page> {
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: EdgeInsets.only(bottom: 10),
-                        child: voucher_individual_item(voucher: finaldata.account.voucherList[index], event: () { setState(() {}); },),
+                        child: voucher_individual_img_item(voucher: finaldata.account.voucherList[index], event: () { setState(() {}); },),
                       );
                     },
                   ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:lyshoppingmain/screen/entered_screen/voucher_page/ingredient/voucher_img_item.dart';
 import '../../../../data/voucherData/Voucher.dart';
 import '../controller/voucher_page_controller.dart';
 import 'voucher_item.dart';
@@ -50,7 +51,8 @@ class _general_voucher_pageState extends State<general_voucher_page> {
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: EdgeInsets.only(bottom: 10),
-                        child: voucher_item(voucher: voucherList[index]),
+                        // child: voucher_item(voucher: voucherList[index]),
+                        child: voucher_img_item(voucher: voucherList[index]),
                       );
                     },
                   ),

@@ -92,9 +92,17 @@ class finaldata {
     viewproductlist: 'View products list',
     support1: 'In-App Support',
     support2: 'Enter text here',
+    Deposit: 'Deposit requirements',
+    Withdraw: 'Request a withdrawal',
+    transacSub: 'The system will transfer you to the customer care department to transact.',
+    accountbalance: 'Account balance',
   );
 
   static Multi_language vi = Multi_language(
+    Deposit: 'Yêu cầu nạp tiền',
+    Withdraw: 'Yêu cầu rút tiền',
+    transacSub: 'Hệ thống sẽ chuyển bạn tới bộ phận CSKH của chúng tôi để tiến hành giao dịch.',
+    accountbalance: 'Số dư của bạn',
     viewproductlist: 'Danh sách sản phẩm',
     Theorderhasnotbeenprocessedyet: "Đơn hàng chưa được xử lý",
     Orderisbeingprocessed: "Đơn hàng đang được xử lý",

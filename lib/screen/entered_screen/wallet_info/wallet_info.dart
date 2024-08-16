@@ -2,9 +2,12 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:lyshoppingmain/screen/entered_screen/wallet_info/ingredient/Deposit_requirements_form/Deposit_requirements_form.dart';
 import 'package:lyshoppingmain/screen/entered_screen/wallet_info/ingredient/Withdrawal_requirements_form/Withdrawal_requirements_form.dart';
+import 'package:lyshoppingmain/screen/entered_screen/wallet_info/ingredient/card_info.dart';
+import 'package:lyshoppingmain/screen/entered_screen/wallet_info/ingredient/change_to_customer_care.dart';
 import '../../../../../data/finaldata.dart';
 import '../../../data/historyData/Transaction.dart';
 import '../../../data/otherdata/Tool.dart';
+import '../chat_room/chat_room.dart';
 import '../main_screen/main_screen.dart';
 import 'controller/wallet_controller.dart';
 import 'ingredient/item_history_transaction.dart';
@@ -19,7 +22,7 @@ class wallet_info extends StatefulWidget {
 }
 
 class _wallet_infoState extends State<wallet_info> {
-
+  bool loading = false;
   List<TransactionHis> hisList = [];
 
   Future<void> _refresh() async {
@@ -92,7 +95,7 @@ class _wallet_infoState extends State<wallet_info> {
                           children: [
                             SizedBox(height: 10,),
 
-                            text_line_in_profile(title: finaldata.mainLang.youraccountbalance, content: getStringNumber(finaldata.account.money) + ' .USDT'),
+                            card_info(),
 
                             Container(
                               alignment: Alignment.centerLeft,
@@ -100,37 +103,55 @@ class _wallet_infoState extends State<wallet_info> {
                                 children: [
                                   TextButton(
                                     child: Text(
-                                      'Deposit requirements',
+                                      finaldata.mainLang.Deposit,
                                       style: TextStyle(
-                                        color: Colors.blueAccent,
+                                        color: Colors.white,
                                         fontFamily: 'sf',
                                         fontSize: 14,
+                                      ),
+                                    ),
+                                    style: ButtonStyle(
+                                      backgroundColor: WidgetStatePropertyAll<Color>(Color.fromARGB(255, 54, 121, 125)),
+                                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(5.0), // Đặt BorderRadius ở đây
+                                        ),
                                       ),
                                     ),
                                     onPressed: () {
                                       showDialog(
                                         context: context,
                                         builder: (context) {
-                                          return Deposit_requirements_form();
+                                          return change_to_customer_care();
                                         },
                                       );
                                     },
                                   ),
 
+                                  SizedBox(width: 10,),
+
                                   TextButton(
                                     child: Text(
-                                      'Request a withdrawal',
+                                      finaldata.mainLang.Withdraw,
                                       style: TextStyle(
-                                        color: Colors.redAccent,
+                                        color: Colors.white,
                                         fontFamily: 'sf',
                                         fontSize: 14,
+                                      ),
+                                    ),
+                                    style: ButtonStyle(
+                                      backgroundColor: WidgetStatePropertyAll<Color>(Colors.redAccent),
+                                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(5.0), // Đặt BorderRadius ở đây
+                                        ),
                                       ),
                                     ),
                                     onPressed: () {
                                       showDialog(
                                         context: context,
                                         builder: (context) {
-                                          return Withdrawal_requirements_form();
+                                          return change_to_customer_care();
                                         },
                                       );
                                     },

@@ -79,6 +79,10 @@ class Multi_language {
   String viewproductlist;
   String support1;
   String support2;
+  String accountbalance;
+  String transacSub;
+  String Deposit;
+  String Withdraw;
 
   Multi_language({required this.WelcomeBack, required this.Loginwithyouraccounttocontinue, required this.Username, required this.Password,required this.Forgotpassword, required this.Login, required this.donthaveaccount, required this.registernow, required this.createaccount, required this.youhaveaaccount, required this.createaaccounttoshoppinginbuysmart, required this.firstName, required this.lastName, required this.home, required this.search, required this.account, required this.voucher, required this.notice, required this.SmartconsumptionwithBuySmart, required this.SearchproductsinBuySmart, required this.vouchercontent1, required this.vouchercontent2, required this.Timelimit,
   required this.GeneralVoucher, required this.IndividualVoucher, required this.Giftthis, required this.selectvoucher, required this.giftthisvoucher, required this.enterreceiveremail, required this.Accountdoesnotexist,
@@ -129,5 +133,9 @@ class Multi_language {
     required this.viewproductlist,
     required this.paymentinformation,
     required this.support1,
-    required this.support2,});
+    required this.support2,
+    required this.Deposit,
+    required this.Withdraw,
+    required this.transacSub,
+    required this.accountbalance,});
 }
