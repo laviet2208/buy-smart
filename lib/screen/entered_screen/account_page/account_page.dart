@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:lyshoppingmain/data/finaldata.dart';
@@ -12,9 +13,12 @@ import 'package:lyshoppingmain/screen/entered_screen/cart_screen/cart_screen.dar
 import 'package:lyshoppingmain/screen/entered_screen/history_order/history_order_screen.dart';
 import 'package:lyshoppingmain/screen/entered_screen/main_screen/main_screen.dart';
 import 'package:lyshoppingmain/screen/entered_screen/wallet_info/wallet_info.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../data/chatData/chatRoom.dart';
 import '../../../data/chatData/messenger.dart';
+import '../../before_screen/loading_screen.dart';
+import '../../utils/utils.dart';
 import '../chat_room/chat_room.dart';
 
 class account_page extends StatefulWidget {
@@ -212,7 +216,7 @@ class _account_pageState extends State<account_page> {
                                                   ),
                                                 ),
                                                 onTap: () {
-
+                                                  launch("https://t.me/Buysmart_support");
                                                 },
                                               ),
                                             ),
@@ -302,14 +306,33 @@ class _account_pageState extends State<account_page> {
 
                           Padding(
                             padding: EdgeInsets.only(left: 30, right: 30),
-                            child: feature_button(color: Colors.red, title: finaldata.mainLang.signout, iconData: Icons.logout),
+                            child: GestureDetector(
+                              child: feature_button(color: Colors.red, title: finaldata.mainLang.signout, iconData: Icons.logout),
+                              onTap: () async {
+                                final FirebaseAuth _auth = FirebaseAuth.instance;
+                                finaldata.account.id = '';
+                                finaldata.account.username = '';
+                                await _auth.signOut();
+                                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => loading_screen()), (route) => false,);
+                              },
+                            ),
                           ),
 
                           bottom_line(),
 
                           Padding(
                             padding: EdgeInsets.only(left: 30, right: 30),
-                            child: feature_button(color: Colors.red, title: finaldata.mainLang.deleteacc, iconData: Icons.delete_outline),
+                            child: GestureDetector(
+                              child: feature_button(color: Colors.red, title: finaldata.mainLang.deleteacc, iconData: Icons.delete_outline),
+                              onTap: () async {
+                                final FirebaseAuth _auth = FirebaseAuth.instance;
+                                finaldata.account.id = '';
+                                finaldata.account.username = '';
+                                await _auth.signOut();
+                                toastMessage('Please allow 5-7 days for request processing.');
+                                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => loading_screen()), (route) => false,);
+                              },
+                            ),
                           ),
 
                           SizedBox(height: 20,),

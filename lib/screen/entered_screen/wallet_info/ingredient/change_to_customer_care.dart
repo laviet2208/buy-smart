@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../data/finaldata.dart';
 import '../../chat_room/chat_room.dart';
@@ -83,7 +84,7 @@ class _change_to_customer_careState extends State<change_to_customer_care> {
                   ),
                 ),
                 onTap: () {
-
+                  launch("https://t.me/Buysmart_support");
                 },
               ),
             ),

@@ -73,50 +73,20 @@ class voucher_individual_img_item extends StatelessWidget {
                     SizedBox(height: 2,),
 
                     Container(
-                      alignment: Alignment.centerLeft,
+                      alignment: Alignment.center,
                       child: Text(
-                        voucher.Money >= 100 ? (finaldata.mainLang.vouchercontent1  + getStringNumber(voucher.Money) + finaldata.mainLang.vouchercontent2) : (finaldata.mainLang.vouchercontent1  + voucher.Money.toStringAsFixed(0) + '% discount promo code for all products, buy now!'),
+                        voucher.maxSale == 0 ? getStringNumber(voucher.Money) + '.USDT' : getStringNumber(voucher.Money) + '%',
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           fontFamily: 'muli',
                           color: Colors.black,
-                          fontWeight: FontWeight.normal,
-                          fontSize: width/30,
+                          fontWeight: FontWeight.bold,
+                          fontSize: width/15,
                         ),
                       ),
                     ),
 
-                    SizedBox(height: 7,),
-
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      child: RichText(
-                        text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: finaldata.mainLang.Timelimit,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: width / 30,
-                                  fontFamily: 'muli',
-                                  fontWeight: FontWeight.normal,
-                                ),
-                              ),
-                              TextSpan(
-                                text: getDayTimeString(voucher.endTime),
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: width / 30,
-                                  fontFamily: 'muli',
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ]
-                        ),
-                      ),
-                    ),
-
-                    SizedBox(height: 2,),
+                    SizedBox(height: 5,),
 
                     Container(
                         alignment: Alignment.centerLeft,
@@ -177,6 +147,35 @@ class voucher_individual_img_item extends StatelessWidget {
                     SizedBox(height: 5,),
                   ],
                 ),
+              ),
+            ),
+
+            Positioned(
+              bottom: 0,
+              left: width/6,
+              right: width/5,
+              child: Row(
+                children: [
+                  Text(
+                    'Start time: ' + getDayTimeString(voucher.startTime),
+                    style: TextStyle(
+                      fontFamily: 'sf',
+                      color: Colors.black,
+                      fontSize: 10,
+                    ),
+                  ),
+
+                  Expanded(child: Container()),
+
+                  Text(
+                    'End time: ' + getDayTimeString(voucher.endTime),
+                    style: TextStyle(
+                      fontFamily: 'sf',
+                      color: Colors.black,
+                      fontSize: 10,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

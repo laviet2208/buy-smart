@@ -146,7 +146,7 @@ class finaldata {
     Timelimit: "Thời hạn: ",
     IndividualVoucher: 'Cá nhân',
     GeneralVoucher: 'Voucher chung',
-    Giftthis: 'Tặng ngay',
+    Giftthis: 'Gift this',
     selectvoucher: "Chọn voucher",
     giftthisvoucher: 'Tặng voucher',
     enterreceiveremail: 'Nhập email người nhận',

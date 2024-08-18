@@ -52,9 +52,7 @@ class _item_productState extends State<item_product> {
     // TODO: implement initState
     super.initState();
     getData();
-    if (product.showStatus != 0) {
-      _getImageURL();
-    }
+    _getImageURL();
   }
 
   @override
