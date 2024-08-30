@@ -20,8 +20,8 @@ class _total_money_check_outState extends State<total_money_check_out> {
   bool loading = false;
 
   bool _canPush() {
-    if (widget.order.receiver.name != '' && widget.order.receiver.district != '' && widget.order.receiver.city != '' &&
-        widget.order.receiver.province != '' && widget.order.receiver.nation != '' && widget.order.receiver.podcode != '' && widget.order.receiver.phoneNumber != '') {
+    if (widget.order.receiver.name != '' && widget.order.receiver.district != '' &&
+         widget.order.receiver.nation != '' && widget.order.receiver.podcode != '' && widget.order.receiver.phoneNumber != '') {
       return true;
     }
     return false;

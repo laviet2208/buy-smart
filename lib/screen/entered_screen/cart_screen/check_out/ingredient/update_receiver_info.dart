@@ -16,15 +16,15 @@ class update_receiver_info extends StatefulWidget {
 class _update_receiver_infoState extends State<update_receiver_info> {
   final nameController = TextEditingController();
   final districtController = TextEditingController();
-  final cityController = TextEditingController();
-  final provinceController = TextEditingController();
+  // final cityController = TextEditingController();
+  // final provinceController = TextEditingController();
   final nationController = TextEditingController();
   final podCodeController = TextEditingController();
   final phoneController = TextEditingController();
   final addressController = TextEditingController();
 
   bool _cansave() {
-    if (nameController.text.isNotEmpty && districtController.text.isNotEmpty && cityController.text.isNotEmpty && provinceController.text.isNotEmpty &&
+    if (nameController.text.isNotEmpty && districtController.text.isNotEmpty &&
         nationController.text.isNotEmpty && podCodeController.text.isNotEmpty && phoneController.text.isNotEmpty && addressController.text.isNotEmpty) {
       return true;
     }
@@ -37,8 +37,8 @@ class _update_receiver_infoState extends State<update_receiver_info> {
     super.initState();
     nameController.text = widget.order.receiver.name;
     districtController.text = widget.order.receiver.district;
-    cityController.text = widget.order.receiver.city;
-    provinceController.text = widget.order.receiver.province;
+    // cityController.text = widget.order.receiver.city;
+    // provinceController.text = widget.order.receiver.province;
     nationController.text = widget.order.receiver.nation;
     podCodeController.text = widget.order.receiver.podcode;
     phoneController.text = widget.order.receiver.phoneNumber;
@@ -72,19 +72,19 @@ class _update_receiver_infoState extends State<update_receiver_info> {
               child: edit_text_in_signup_step_1(controller: districtController, hint: finaldata.mainLang.Enteryourdistrict, event: () {setState(() {});  },),
             ),
 
-            SizedBox(height: 10,),
-
-            SizedBox(
-              height: 50,
-              child: edit_text_in_signup_step_1(controller: cityController, hint: finaldata.mainLang.Enteryourcity, event: () {setState(() {});  },),
-            ),
-
-            SizedBox(height: 10,),
-
-            SizedBox(
-              height: 50,
-              child: edit_text_in_signup_step_1(controller: provinceController, hint: finaldata.mainLang.Enteryourprovince, event: () {setState(() {});  },),
-            ),
+            // SizedBox(height: 10,),
+            //
+            // SizedBox(
+            //   height: 50,
+            //   child: edit_text_in_signup_step_1(controller: cityController, hint: finaldata.mainLang.Enteryourcity, event: () {setState(() {});  },),
+            // ),
+            //
+            // SizedBox(height: 10,),
+            //
+            // SizedBox(
+            //   height: 50,
+            //   child: edit_text_in_signup_step_1(controller: provinceController, hint: finaldata.mainLang.Enteryourprovince, event: () {setState(() {});  },),
+            // ),
 
             SizedBox(height: 10,),
 
@@ -122,10 +122,10 @@ class _update_receiver_infoState extends State<update_receiver_info> {
             if (_cansave()) {
               widget.order.receiver.name = nameController.text.toString();
               widget.order.receiver.district = districtController.text.toString();
-              widget.order.receiver.city = cityController.text.toString();
+              // widget.order.receiver.city = cityController.text.toString();
               widget.order.receiver.nation = nationController.text.toString();
               widget.order.receiver.podcode = podCodeController.text.toString();
-              widget.order.receiver.province = provinceController.text.toString();
+              // widget.order.receiver.province = provinceController.text.toString();
               widget.order.receiver.phoneNumber = phoneController.text.toString();
               widget.order.receiver.address = addressController.text.toString();
               widget.event();

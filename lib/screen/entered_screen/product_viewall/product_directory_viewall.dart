@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:lyshoppingmain/data/product/ProductDirectory.dart';
 
 import '../main_page/ingredient/directory_area/item_product/item_product.dart';
@@ -15,8 +16,43 @@ class product_directory_viewall extends StatefulWidget {
 }
 
 class _product_directory_viewallState extends State<product_directory_viewall> {
+  ScrollController _scrollController = ScrollController();
+  List<int> _items = List.generate(10, (index) => index); // Khởi tạo với 10 phần tử đầu tiên
+  bool _isLoading = false;
+
   Future<void> _refresh() async {
 
+  }
+
+  Future<void> _loadMoreItems() async {
+    if (_items.length >= widget.productDirectory.productList.length) {
+      return; // Đã tải hết các phần tử
+    }
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    // Giả lập thời gian tải dữ liệu
+    await Future.delayed(Duration(seconds: 2));
+
+    setState(() {
+      int nextIndex = _items.length;
+      int loadCount = (widget.productDirectory.productList.length - nextIndex) < 10 ? (widget.productDirectory.productList.length - nextIndex) : 10;
+      _items.addAll(List.generate(loadCount, (index) => nextIndex + index));
+      _isLoading = false;
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent && !_isLoading) {
+        _loadMoreItems();
+      }
+    });
   }
 
   @override
@@ -62,6 +98,7 @@ class _product_directory_viewallState extends State<product_directory_viewall> {
                       onRefresh: _refresh,
                       child: Container(
                         child: widget.productDirectory.productList.length != 0 ? ListView(
+                          controller: _scrollController,
                           children: [
                             SizedBox(height: 10,),
 
@@ -77,12 +114,15 @@ class _product_directory_viewallState extends State<product_directory_viewall> {
                                     crossAxisSpacing: 15, // khoảng cách giữa các cột
                                     childAspectRatio: 2/3,
                                   ),
-                                  itemCount: widget.productDirectory.productList.length,
+                                  itemCount: _items.length + (_isLoading && _items.length < widget.productDirectory.productList.length ? 1 : 0),
                                   itemBuilder: (context, index) {
+                                    if (index == _items.length) {
+                                      return Container(alignment: Alignment.center ,child: SpinKitFoldingCube(color: Color.fromARGB(255, 255, 190, 93), size: 30,),);
+                                    }
                                     return GestureDetector(
-                                      child: item_product(id: widget.productDirectory.productList[index], productList: widget.productDirectory.productList, event: () {setState(() {});},),
+                                      child: item_product(id: widget.productDirectory.productList[index], productList: widget.productDirectory.productList, event: () {setState(() {});}, beforeWidget: widget,),
                                       onTap: () {
-                                        Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => product_view_screen(id: widget.productDirectory.productList[index], beforeWidget: widget)));
+                                        // Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => product_view_screen(id: widget.productDirectory.productList[index], beforeWidget: widget)));
                                       },
                                     );
                                   },

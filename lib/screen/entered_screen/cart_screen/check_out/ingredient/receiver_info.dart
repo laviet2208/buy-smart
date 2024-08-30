@@ -79,35 +79,35 @@ class _receiver_infoState extends State<receiver_info> {
                             ),
                           ),
 
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              widget.order.receiver.city == '' ? finaldata.mainLang.Pleaseaddyourcity : widget.order.receiver.city,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: width/25,
-                                color: Colors.black,
-                                fontFamily: 'sf',
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                          ),
-
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              widget.order.receiver.province == '' ? finaldata.mainLang.Pleaseaddyourprovince : (widget.order.receiver.province + ' ' + widget.order.receiver.podcode),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: width/25,
-                                color: Colors.black,
-                                fontFamily: 'sf',
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                          ),
+                          // Container(
+                          //   alignment: Alignment.centerLeft,
+                          //   child: Text(
+                          //     widget.order.receiver.city == '' ? finaldata.mainLang.Pleaseaddyourcity : widget.order.receiver.city,
+                          //     maxLines: 1,
+                          //     overflow: TextOverflow.ellipsis,
+                          //     style: TextStyle(
+                          //       fontSize: width/25,
+                          //       color: Colors.black,
+                          //       fontFamily: 'sf',
+                          //       fontWeight: FontWeight.normal,
+                          //     ),
+                          //   ),
+                          // ),
+                          //
+                          // Container(
+                          //   alignment: Alignment.centerLeft,
+                          //   child: Text(
+                          //     widget.order.receiver.province == '' ? finaldata.mainLang.Pleaseaddyourprovince : (widget.order.receiver.province + ' ' + widget.order.receiver.podcode),
+                          //     maxLines: 1,
+                          //     overflow: TextOverflow.ellipsis,
+                          //     style: TextStyle(
+                          //       fontSize: width/25,
+                          //       color: Colors.black,
+                          //       fontFamily: 'sf',
+                          //       fontWeight: FontWeight.normal,
+                          //     ),
+                          //   ),
+                          // ),
 
                           Container(
                             alignment: Alignment.centerLeft,

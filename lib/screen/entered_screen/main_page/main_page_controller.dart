@@ -7,7 +7,7 @@ import 'package:lyshoppingmain/data/product/ProductType.dart';
 class main_page_controller {
   static Future<List<AdsData>> get_ads_list() async {
     final reference = FirebaseDatabase.instance.ref();
-    DatabaseEvent snapshot = await reference.child("adsData").once();
+    DatabaseEvent snapshot = await reference.child("adsData").orderByChild('status').equalTo(1).once();
     final dynamic data = snapshot.snapshot.value;
     List<AdsData> dataList = [];
     if (data != null) {

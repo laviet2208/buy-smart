@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:lyshoppingmain/data/otherdata/Tool.dart';
+import 'package:lyshoppingmain/data/product/Product.dart';
 import 'package:lyshoppingmain/data/product/ProductType.dart';
 import 'package:lyshoppingmain/screen/entered_screen/main_page/ingredient/directory_area/item_product/item_product.dart';
+import 'package:lyshoppingmain/screen/entered_screen/main_page/ingredient/directory_area/item_product/item_product_type_1.dart';
+import 'package:lyshoppingmain/screen/entered_screen/product_viewall/product_directory_viewall_controller.dart';
 
 import '../product_view_screen/product_view_screen.dart';
 import 'ingredient/product_type_viewall_appbar.dart';
@@ -15,8 +20,23 @@ class product_type_viewall extends StatefulWidget {
 }
 
 class _product_type_viewallState extends State<product_type_viewall> {
+  List<Product> productList = [];
+  bool loading = false;
   Future<void> _refresh() async {
+    setState(() {
+      loading = true;
+    });
+    productList = await product_directory_viewall_controller.get_product_list_by_type_id(widget.productType.id, () {setState(() {loading = false;});});
+    setState(() {
 
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _refresh();
   }
 
   @override
@@ -57,12 +77,12 @@ class _product_type_viewallState extends State<product_type_viewall> {
                     title: product_type_viewall_appbar(title: widget.productType.name, beforeWidget: widget.beforeWidget, currentWidget: widget,),
                   ),
                   backgroundColor: Colors.transparent,
-                  body: Container(
+                  body: !loading ? Container(
                     child: RefreshIndicator(
                       onRefresh: _refresh,
                       child: Container(
                         alignment: Alignment.center,
-                        child: widget.productType.productList.length != 0 ? ListView(
+                        child: productList.length != 0 ? ListView(
                           children: [
                             SizedBox(height: 10,),
 
@@ -78,12 +98,12 @@ class _product_type_viewallState extends State<product_type_viewall> {
                                     crossAxisSpacing: 15, // khoảng cách giữa các cột
                                     childAspectRatio: 2/3,
                                   ),
-                                  itemCount: widget.productType.productList.length,
+                                  itemCount: productList.length,
                                   itemBuilder: (context, index) {
                                     return GestureDetector(
-                                      child: item_product(id: widget.productType.productList[index], productList: widget.productType.productList, event: () {setState(() {});},),
+                                      child: item_product_type_1(product: productList[index]),
                                       onTap: () {
-                                        Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => product_view_screen(id: widget.productType.productList[index], beforeWidget: widget)));
+                                        Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => product_view_screen(id: productList[index].id, beforeWidget: widget)));
                                       },
                                     );
                                   },
@@ -96,7 +116,7 @@ class _product_type_viewallState extends State<product_type_viewall> {
                         ) : Text('There is not any products in here!', style: TextStyle(fontSize: 12, color: Colors.black),),
                       ),
                     ),
-                  ),
+                  ) : Container(alignment: Alignment.center ,child: SpinKitFoldingCube(color: Color.fromARGB(255, 255, 190, 93), size: 30,),),
                 ),
               ),
             ],

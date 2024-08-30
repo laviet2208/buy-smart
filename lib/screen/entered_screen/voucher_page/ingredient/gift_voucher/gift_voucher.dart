@@ -64,8 +64,8 @@ class _gift_voucherState extends State<gift_voucher> {
                           setState(() {
                             loading1 = true;
                           });
-                          if (await Loading_Controller.checkAccountData(emailController.text.toString())) {
-                            Account acc = await Loading_Controller.getAccountData(emailController.text.toString());
+                          Account acc = await Loading_Controller.getAccountData(emailController.text.toString());
+                          if (acc.id != "") {
                             acc.voucherList.add(widget.voucher);
                             finaldata.account.voucherList.removeAt(check_out_controller.get_voucher_index(widget.voucher));
                             DatabaseReference database = FirebaseDatabase.instance.ref("Account");
@@ -78,7 +78,6 @@ class _gift_voucherState extends State<gift_voucher> {
                               loading1 = false;
                             });
                             Navigator.of(context).pop();
-                            // print('Index: ' + check_out_controller.get_voucher_index(widget.voucher).toString());
                           } else {
                             setState(() {
                               loading1 = false;
